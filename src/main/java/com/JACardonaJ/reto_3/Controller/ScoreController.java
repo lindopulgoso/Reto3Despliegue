@@ -17,7 +17,7 @@ public class ScoreController {
     @Autowired
     private ScoreService scoreService ;
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.CREATED)
+
     public List<Score> getAll(){
         return  scoreService.getAll();
     }
@@ -26,7 +26,7 @@ public class ScoreController {
         return  scoreService.getScore(id);
     }
     @PostMapping("/save")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public Score save(@RequestBody Score score){
         return scoreService.save(score);
     }

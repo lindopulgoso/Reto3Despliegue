@@ -17,18 +17,18 @@ public class ToolController {
     @Autowired
     private ToolService toolService ;
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.CREATED)
+
     public List<Tool> getAll(){
         return  toolService.getAll();
     }
 
     @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+
     public Optional<Tool> getTool(@PathVariable("id") int id){
         return  toolService.getTool(id);
     }
     @PostMapping("/save")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public Tool save(@RequestBody Tool tool){
         return toolService.save(tool);
     }

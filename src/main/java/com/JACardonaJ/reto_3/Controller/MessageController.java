@@ -17,7 +17,7 @@ public class MessageController {
     @Autowired
     private MessageService messageService ;
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.CREATED)
+
     public List<Message> getAll(){
         return  messageService.getAll();
     }
@@ -26,7 +26,7 @@ public class MessageController {
         return  messageService.getMessage(id);
     }
     @PostMapping("/save")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public Message save(@RequestBody Message message){
         return messageService.save(message);
     }

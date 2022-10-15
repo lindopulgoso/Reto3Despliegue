@@ -17,7 +17,7 @@ public class ReservationController {
     @Autowired
     private ReservationService reservationService ;
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.CREATED)
+
     public List<Reservation> getAll(){
         return  reservationService.getAll();
     }
@@ -26,7 +26,7 @@ public class ReservationController {
         return  reservationService.getReservation(id);
     }
     @PostMapping("/save")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public Reservation save(@RequestBody Reservation reservation){
         return reservationService.save(reservation);
     }

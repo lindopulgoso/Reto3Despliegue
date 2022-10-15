@@ -17,7 +17,7 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.CREATED)
+
     public List<Client> getAll(){
         return  clientService.getAll();
     }
@@ -26,7 +26,7 @@ public class ClientController {
         return  clientService.getClient(id);
     }
     @PostMapping("/save")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public Client save(@RequestBody Client client){
         return clientService.save(client);
     }
