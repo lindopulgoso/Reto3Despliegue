@@ -1,6 +1,7 @@
 package com.JACardonaJ.reto_3.Controller;
 
 import com.JACardonaJ.reto_3.Model.Score;
+import com.JACardonaJ.reto_3.Model.Tool;
 import com.JACardonaJ.reto_3.Service.ScoreService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,17 @@ public class ScoreController {
     @ResponseStatus(HttpStatus.CREATED)
     public Score save(@RequestBody Score score){
         return scoreService.save(score);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Score update(@RequestBody Score score){
+        return scoreService.update(score);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){
+        return scoreService.delete(id);
     }
 }

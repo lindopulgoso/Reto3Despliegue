@@ -3,6 +3,7 @@ package com.JACardonaJ.reto_3.Controller;
 
 
 import com.JACardonaJ.reto_3.Model.Category;
+import com.JACardonaJ.reto_3.Model.Tool;
 import com.JACardonaJ.reto_3.Service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,18 @@ public class CategoryController {
     @ResponseStatus(HttpStatus.CREATED)
     public Category save(@RequestBody Category category){
         return categoryService.save(category);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Category update(@RequestBody Category category){
+        return categoryService.update(category);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){
+        return categoryService.delete(id);
     }
 
 

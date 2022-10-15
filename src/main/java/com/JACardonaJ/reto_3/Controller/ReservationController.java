@@ -1,6 +1,7 @@
 package com.JACardonaJ.reto_3.Controller;
 
 import com.JACardonaJ.reto_3.Model.Reservation;
+import com.JACardonaJ.reto_3.Model.Tool;
 import com.JACardonaJ.reto_3.Service.ReservationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +31,16 @@ public class ReservationController {
     public Reservation save(@RequestBody Reservation reservation){
         return reservationService.save(reservation);
     }
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Reservation update(@RequestBody Reservation reservation){
+        return reservationService.update(reservation);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){
+        return reservationService.delete(id);
+    }
+
 }

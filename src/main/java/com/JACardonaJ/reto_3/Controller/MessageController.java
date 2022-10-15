@@ -1,6 +1,7 @@
 package com.JACardonaJ.reto_3.Controller;
 
 import com.JACardonaJ.reto_3.Model.Message;
+import com.JACardonaJ.reto_3.Model.Tool;
 import com.JACardonaJ.reto_3.Service.MessageService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,17 @@ public class MessageController {
     @ResponseStatus(HttpStatus.CREATED)
     public Message save(@RequestBody Message message){
         return messageService.save(message);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Message update(@RequestBody Message message){
+        return messageService.update(message);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){
+        return messageService.delete(id);
     }
 }

@@ -2,6 +2,7 @@ package com.JACardonaJ.reto_3.Controller;
 
 
 import com.JACardonaJ.reto_3.Model.Client;
+import com.JACardonaJ.reto_3.Model.Tool;
 import com.JACardonaJ.reto_3.Service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,18 @@ public class ClientController {
     @ResponseStatus(HttpStatus.CREATED)
     public Client save(@RequestBody Client client){
         return clientService.save(client);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Client update(@RequestBody Client client){
+        return clientService.update(client);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){
+        return clientService.delete(id);
     }
 
 
