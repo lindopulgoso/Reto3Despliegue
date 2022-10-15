@@ -26,7 +26,7 @@ public class AdminController {
 
     // /api/Admin/save
     @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public Admin save(@RequestBody Admin admin){
         return adminService.save(admin);
     }

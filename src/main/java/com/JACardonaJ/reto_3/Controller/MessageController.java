@@ -26,7 +26,7 @@ public class MessageController {
         return  messageService.getMessage(id);
     }
     @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public Message save(@RequestBody Message message){
         return messageService.save(message);
     }

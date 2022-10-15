@@ -23,11 +23,12 @@ public class ToolController {
     }
 
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
     public Optional<Tool> getTool(@PathVariable("id") int id){
         return  toolService.getTool(id);
     }
     @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public Tool save(@RequestBody Tool tool){
         return toolService.save(tool);
     }

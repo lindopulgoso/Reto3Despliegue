@@ -26,7 +26,7 @@ public class ScoreController {
         return  scoreService.getScore(id);
     }
     @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public Score save(@RequestBody Score score){
         return scoreService.save(score);
     }
