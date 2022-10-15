@@ -35,8 +35,8 @@ public class ToolService {
     }
     public  Tool update(Tool tool){
         if(tool.getId()!=null){
-            Optional<Tool>  toolEncontrado=getTool(tool.getId());
-            if(!toolEncontrado.isPresent()){
+            Optional<Tool>  toolEncontrado=toolRepository.getTool(tool.getId());
+            if(toolEncontrado.isPresent()){
                 if(tool.getName()!=null){
                     toolEncontrado.get().setName(tool.getName());
                 }   if(tool.getBrand()!=null){
@@ -48,8 +48,12 @@ public class ToolService {
                 }if(tool.getCategory()!=null){
                     toolEncontrado.get().setCategory(tool.getCategory());
                 } return  toolRepository.save(toolEncontrado.get());
+            }  else{
+                return tool;
             }
-        }  return  tool;
+        } else{
+            return tool;
+        }
     }
 
     public  boolean delete(int id){
