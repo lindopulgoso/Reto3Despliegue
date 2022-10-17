@@ -2,6 +2,8 @@ package com.JACardonaJ.reto_3.Controller;
 
 import com.JACardonaJ.reto_3.Model.Reservation;
 import com.JACardonaJ.reto_3.Model.Tool;
+import com.JACardonaJ.reto_3.Model.personalizado.CountClient;
+import com.JACardonaJ.reto_3.Model.personalizado.StatusAmount;
 import com.JACardonaJ.reto_3.Service.ReservationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,21 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id){
         return reservationService.delete(id);
+    }
+    @GetMapping("/report-clients")
+    public  List<CountClient> getReservationReportClient(){
+        return  reservationService.getTopClients();
+
+    }
+    @GetMapping("/report-status")
+    public StatusAmount getReservationStatus(){
+        return  reservationService.getReservationStatusReport();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public  List<Reservation> getReservationReportDates(@PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
+        return  reservationService.getReservationPeriod(dateOne,dateTwo);
+
     }
 
 }

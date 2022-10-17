@@ -1,10 +1,17 @@
 package com.JACardonaJ.reto_3.Service;
 
 import com.JACardonaJ.reto_3.Model.Reservation;
+import com.JACardonaJ.reto_3.Model.personalizado.CountClient;
+import com.JACardonaJ.reto_3.Model.personalizado.StatusAmount;
 import com.JACardonaJ.reto_3.Repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,6 +66,35 @@ public class ReservationService {
             return true;
         }).orElse(false);
         return  respuesta;
+
+    }
+
+    public  List<CountClient> getTopClients(){
+
+        return  reservationRepository.getTopClients();
+    }
+    public StatusAmount getReservationStatusReport(){
+        List<Reservation> completed= reservationRepository.getReservationByStatus("completed");
+        List<Reservation> cancelled= reservationRepository.getReservationByStatus("cancelled");
+        return  new StatusAmount(completed.size(),cancelled.size());
+    }
+    public  List<Reservation> getReservationPeriod(String dateA,String dateB){
+        SimpleDateFormat parser= new SimpleDateFormat("yyyy-MM-dd");
+        Date a=new Date();
+        Date b=new Date();
+        try {
+            a=parser.parse(dateA);
+            b=parser.parse(dateA);
+
+
+        }catch (ParseException e){
+            e.setStackTrace(e.getStackTrace());
+        } if(a.before(b)){
+            return  reservationRepository.getReservationPeriod(a,b);
+        }else {
+            return  new ArrayList<>();
+        }
+
 
     }
 }
